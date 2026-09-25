@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<title>Book an errand | Sendy Errands</title>
+<meta name="description" content="Tell Sendy what you need, where it is coming from and where it is going. We confirm the price on WhatsApp before a rider moves.">
+<meta name="theme-color" content="#E0116E">
+<meta name="robots" content="noindex">
+
+<link rel="icon" href="img/logo-badge.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a href="#main" class="skip">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav__in">
+    <a href="index.html" class="nav__brand"><img src="img/logo-badge.png" alt="">Sendy</a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="index.html#services">Services</a>
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#plan">Schedule</a>
+      <a href="index.html#faq">FAQ</a>
+    </nav>
+    <div class="nav__right">
+      <a href="tel:+2347047654376" class="nav__help">Help</a>
+      <a href="index.html#account" class="nav__help">Log in</a>
+      <a href="https://wa.me/2347047654376" target="_blank" rel="noopener" class="btn btn--white btn--sm">Chat instead</a>
+      <button type="button" class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobile-nav" data-open="false">
+  <a href="index.html#services">Services</a>
+  <a href="index.html#how">How it works</a>
+  <a href="index.html#plan">Schedule</a>
+  <a href="index.html#faq">FAQ</a>
+  <a href="tel:+2347047654376">Call +234 704 765 4376</a>
+  <a href="https://wa.me/2347047654376" target="_blank" rel="noopener" class="btn btn--white">Chat instead</a>
+</div>
+
+<main id="main">
+
+  <div class="wrap book-head">
+    <h1>Submit an errand request</h1>
+    <p>Tell us what you need and how to reach you. We confirm the final price with you on WhatsApp before a rider moves — nothing is charged here.</p>
+  </div>
+
+  <div class="wrap book-grid">
+
+    <!-- The form is inert in this demo. Field names match book.php exactly, so
+         wiring it up is a matter of pointing the action at the real endpoint. -->
+    <form id="book-form" novalidate>
+
+      <section class="book-step">
+        <div class="book-step__head"><span class="book-step__n">1</span><h2>What do you need?</h2></div>
+        <div class="pick" id="pick">
+          <label><input type="radio" name="service" value="market-shopping" data-name="Market Shopping" data-from="1500" checked><img src="img/services/market-shopping.png" alt="">Market Shopping</label>
+          <label><input type="radio" name="service" value="grocery-shopping" data-name="Grocery Shopping" data-from="1500"><img src="img/services/grocery-shopping.png" alt="">Grocery Shopping</label>
+          <label><input type="radio" name="service" value="food-pickup" data-name="Food Pickup" data-from="1000"><img src="img/services/food-pickup.png" alt="">Food Pickup</label>
+          <label><input type="radio" name="service" value="package-pickup" data-name="Package Pickup" data-from="1200"><img src="img/services/package-pickup.png" alt="">Package Pickup</label>
+          <label><input type="radio" name="service" value="delivery" data-name="Delivery" data-from="1200"><img src="img/services/delivery.png" alt="">Delivery</label>
+          <label><input type="radio" name="service" value="personal-errands" data-name="Personal Errands" data-from="1500"><img src="img/services/personal-errands.png" alt="">Personal Errands</label>
+          <label><input type="radio" name="service" value="custom-errand" data-name="Custom Errand" data-from="1500"><img src="img/services/custom-errand.png" alt="">Custom Errand</label>
+        </div>
+      </section>
+
+      <section class="book-step">
+        <div class="book-step__head"><span class="book-step__n">2</span><h2>Where is it going?</h2></div>
+        <div class="frow">
+          <label class="fld"><span>Pickup location</span><input type="text" id="pickup" name="pickup" placeholder="e.g. Ikeja City Mall, Alausa"></label>
+          <label class="fld"><span>Destination</span><input type="text" id="dropoff" name="dropoff" placeholder="e.g. 12 Nimota Close, Ikotun"></label>
+        </div>
+        <label class="fld"><span>What are we getting or moving?</span><textarea id="item_description" name="item_description" placeholder="e.g. 2 bags of rice, a crate of eggs, tomatoes and peppers"></textarea></label>
+        <label class="fld"><span>Anything the rider should know? <em style="font-weight:500; color:var(--muted); font-style:normal;">(optional)</em></span><textarea id="instructions" name="instructions" placeholder="e.g. Call when you get to the gate. Ask for Bimbo."></textarea></label>
+      </section>
+
+      <section class="book-step">
+        <div class="book-step__head"><span class="book-step__n">3</span><h2>When do you need it?</h2></div>
+        <p class="book-step__hint">Leave both blank and we'll treat it as "as soon as possible".</p>
+        <div class="frow">
+          <label class="fld"><span>Date</span><input type="date" id="date" name="date"></label>
+          <label class="fld"><span>Time</span><input type="time" id="time" name="time"></label>
+        </div>
+      </section>
+
+      <section class="book-step">
+        <div class="book-step__head"><span class="book-step__n">4</span><h2>How do we reach you?</h2></div>
+        <div class="frow">
+          <label class="fld"><span>Your name</span><input type="text" id="name" name="name" placeholder="e.g. Amaka Johnson"></label>
+          <label class="fld"><span>WhatsApp number</span><input type="tel" id="phone" name="phone" placeholder="08031234567"></label>
+        </div>
+        <div class="frow">
+          <label class="fld"><span>Alternate number</span><input type="tel" id="alt_phone" name="alt_phone" placeholder="08030000000"></label>
+          <label class="fld"><span>Email <em style="font-weight:500; color:var(--muted); font-style:normal;">(optional)</em></span><input type="email" id="email" name="email" placeholder="you@example.com"></label>
+        </div>
+        <p class="fld__note">We use WhatsApp to confirm your price and keep you posted. No account needed.</p>
+      </section>
+    </form>
+
+    <aside class="summary" aria-label="Your request">
+      <h3>Your request</h3>
+      <dl>
+        <div class="row"><dt>Service</dt><dd id="s-service">Market Shopping</dd></div>
+        <div class="row"><dt>Pickup</dt><dd id="s-pickup">—</dd></div>
+        <div class="row"><dt>Destination</dt><dd id="s-dropoff">—</dd></div>
+        <div class="row"><dt>When</dt><dd id="s-when">As soon as possible</dd></div>
+      </dl>
+
+      <div class="summary__total">
+        <span>Starting from</span>
+        <b id="s-price">₦1,500</b>
+      </div>
+
+      <button type="submit" form="book-form" class="btn btn--pink btn--block">Submit request</button>
+      <p class="summary__fine">The final price depends on distance and what the errand involves. We confirm it with you before a rider moves, and you pay cash or transfer on completion.</p>
+
+      <div class="book-done" id="book-done" role="status">
+        <b>This is a design demo</b>
+        <p>Nothing was submitted. Once approved, this form posts to the live booking flow — the field names already match it.</p>
+      </div>
+    </aside>
+
+  </div>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <a href="index.html" class="foot__brand"><img src="img/logo-badge.png" alt="">Sendy</a>
+    <p class="foot__about">You have things to do. Sendy gets them done — market runs, pickups, deliveries and everyday errands.</p>
+    <div class="foot__base">
+      <span>No 7, Nimota Close, Ikotun–Igando Road, Unity Bus Stop, Lagos.</span>
+      <span>© 2026 Sendy Errands. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/2347047654376" target="_blank" rel="noopener" aria-label="Chat with Sendy on WhatsApp">
+  <svg width="27" height="27" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.91-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.49.7.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.42-.08-.12-.28-.2-.58-.34"/><path fill="currentColor" d="M12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26C2.16 6.45 6.6 2.01 12.05 2.01c2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.43 9.89-9.88 9.89m8.41-18.3A11.82 11.82 0 0 0 12.05.01C5.5.01.16 5.35.16 11.9c0 2.1.55 4.15 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45c6.55 0 11.89-5.34 11.89-11.9a11.82 11.82 0 0 0-3.48-8.41Z"/></svg>
+</a>
+
+<script>
+(function () {
+  var burger = document.getElementById('burger');
+  var menu = document.getElementById('mobile-nav');
+  if (burger && menu) {
+    var setOpen = function (open) {
+      menu.setAttribute('data-open', open ? 'true' : 'false');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    };
+    burger.addEventListener('click', function () { setOpen(menu.getAttribute('data-open') !== 'true'); });
+    menu.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
+  }
+})();
+
+(function () {
+  var form = document.getElementById('book-form');
+  if (!form) return;
+
+  var naira = function (n) { return '₦' + Number(n).toLocaleString('en-NG'); };
+
+  /* Prefilled from the query string, so the hero's pickup and drop-off carry
+     straight through — the same params book.php already reads. */
+  var q = new URLSearchParams(location.search);
+  ['pickup', 'dropoff', 'name', 'phone', 'email'].forEach(function (k) {
+    var el = document.getElementById(k);
+    if (el && q.get(k)) el.value = q.get(k);
+  });
+  var svc = q.get('service');
+  if (svc) {
+    var radio = form.querySelector('input[name="service"][value="' + CSS.escape(svc) + '"]');
+    if (radio) radio.checked = true;
+  }
+
+  function when() {
+    var d = document.getElementById('date').value;
+    var t = document.getElementById('time').value;
+    if (!d && !t) return 'As soon as possible';
+    if (d && t) return d + ' at ' + t;
+    return d || t;
+  }
+
+  function sync() {
+    var picked = form.querySelector('input[name="service"]:checked');
+    document.getElementById('s-service').textContent = picked ? picked.dataset.name : '—';
+    document.getElementById('s-price').textContent = picked ? naira(picked.dataset.from) : '—';
+    document.getElementById('s-pickup').textContent = document.getElementById('pickup').value.trim() || '—';
+    document.getElementById('s-dropoff').textContent = document.getElementById('dropoff').value.trim() || '—';
+    document.getElementById('s-when').textContent = when();
+  }
+
+  form.addEventListener('input', sync);
+  form.addEventListener('change', sync);
+  sync();
+
+  form.addEventListener('submit', function (e) {
+    /* Demo only — deliberately goes nowhere rather than pretending to succeed.
+       Saying so is better than a fake confirmation for an errand nobody will run. */
+    e.preventDefault();
+    var done = document.getElementById('book-done');
+    done.setAttribute('data-shown', 'true');
+    done.scrollIntoView({ block: 'center', behavior: 'smooth' });
+  });
+})();
+</script>
+
+</body>
+</html>

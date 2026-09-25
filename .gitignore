@@ -1,0 +1,25 @@
+# Secrets. Written before any .env file exists, so a key can never sit in a
+# tracked file even briefly.
+.env
+.env.*
+!.env.example
+
+# Dependencies and build output
+/node_modules/
+/.next/
+/out/
+/dist/
+/build/
+
+# Asset working files — originals and intermediates are large and are not the
+# deliverable. Processed, committed assets live under public/.
+/assets-raw/
+*.psd
+*.ai
+
+# Editor / OS noise
+.DS_Store
+Thumbs.db
+.idea/
+*.swp
+*~

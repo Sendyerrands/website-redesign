@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<title>Sendy Errands — We handle the errands, you handle life</title>
+<meta name="description" content="Market runs, food and package pickups, deliveries and personal errands across Lagos. Tell Sendy what you need and a verified rider takes it from there.">
+<meta name="theme-color" content="#E0116E">
+
+<link rel="icon" href="img/logo-badge.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a href="#main" class="skip">Skip to content</a>
+
+<!-- includes/header.php -->
+<header class="nav">
+  <div class="wrap nav__in">
+    <a href="#top" class="nav__brand" id="top">
+      <img src="img/logo-badge.png" alt="">
+      Sendy
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#services">Services</a>
+      <a href="#how">How it works</a>
+      <a href="#plan">Schedule</a>
+      <a href="#why">Why Sendy</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <div class="nav__right">
+      <a href="tel:+2347047654376" class="nav__help">Help</a>
+      <a href="#account" class="nav__help">Log in</a>
+      <a href="https://wa.me/2347047654376?text=Hello%20Sendy%20%F0%9F%91%8B%0A%0AI%27d%20like%20to%20book%20an%20errand." target="_blank" rel="noopener" class="btn btn--white btn--sm">Book an errand</a>
+      <button type="button" class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobile-nav" data-open="false">
+  <a href="#services">Services</a>
+  <a href="#how">How it works</a>
+  <a href="#plan">Schedule</a>
+  <a href="#why">Why Sendy</a>
+  <a href="#account">Log in</a>
+  <a href="tel:+2347047654376">Call +234 704 765 4376</a>
+  <a href="https://wa.me/2347047654376?text=Hello%20Sendy%20%F0%9F%91%8B" target="_blank" rel="noopener" class="btn btn--white">Book an errand</a>
+</div>
+
+<main id="main">
+
+  <!-- ============================ HERO ============================ -->
+  <section class="hero">
+    <div class="wrap hero__grid">
+      <div>
+        <span class="hero__place">
+          <svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.6 7-12a7 7 0 1 0-14 0c0 5.4 7 12 7 12Z" stroke="currentColor" stroke-width="1.9" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="9" r="2.3" stroke="currentColor" stroke-width="1.9" fill="none"/></svg>
+          <!-- Rendered with the real default, not a spinner: the page is correct
+               before the IP lookup returns, and stays correct if it never does. -->
+          <span id="place">Lagos, Nigeria</span>
+          <button type="button" class="hero__change" id="change-city">Change city</button>
+          <select class="hero__city-select" id="city-select" aria-label="Choose your city" hidden>
+            <option>Lagos, Nigeria</option>
+            <option>Abuja, Nigeria</option>
+            <option>Ibadan, Nigeria</option>
+            <option>Port Harcourt, Nigeria</option>
+            <option>Benin City, Nigeria</option>
+            <option>Enugu, Nigeria</option>
+            <option>Kano, Nigeria</option>
+            <option>Abeokuta, Nigeria</option>
+          </select>
+        </span>
+
+        <h1>Too busy? Sendy it.</h1>
+        <p class="hero__lead">A market run, a pickup, a delivery, some errand you just don't have time for. Tell us what you need and a verified rider takes it from there.</p>
+
+        <!-- GET, so pickup and drop-off arrive on the booking page as query
+             params — the same shape book.php already accepts. -->
+        <form class="route" action="book.html" method="get">
+          <span class="route__link" aria-hidden="true"></span>
+
+          <div class="route__row">
+            <span class="route__marker route__marker--start" aria-hidden="true"><i></i></span>
+            <label class="sr-only" for="pickup" hidden>Pickup location</label>
+            <input id="pickup" name="pickup" type="text" placeholder="Pickup location" autocomplete="off">
+            <button type="button" class="route__locate" aria-label="Use my current location">
+              <svg width="19" height="19" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3 3 10.5l7.5 3L14 21l7-18Z" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+
+          <div class="route__row">
+            <span class="route__marker route__marker--end" aria-hidden="true"><i></i></span>
+            <label class="sr-only" for="dropoff" hidden>Destination</label>
+            <input id="dropoff" name="dropoff" type="text" placeholder="Destination" autocomplete="off">
+          </div>
+
+          <div class="hero__actions">
+            <button type="submit" class="btn btn--pink">Submit errand request</button>
+            <a href="#services" class="hero__note">Or browse what we handle</a>
+          </div>
+        </form>
+      </div>
+
+      <div class="hero__visual">
+        <img src="img/hero-rider.jpg" alt="A Sendy rider on his bicycle, ready to run an errand" width="756" height="1008" loading="eager">
+
+        <!-- Carried over from the reference: a floating prompt over the image.
+             It earns its place — the one action the page most wants, sitting
+             where the eye already is. -->
+        <div class="glass">
+          <strong>Need it today?</strong>
+          <a href="https://wa.me/2347047654376?text=Hello%20Sendy%20%F0%9F%91%8B%0A%0AI%27d%20like%20to%20book%20an%20errand." target="_blank" rel="noopener" class="btn btn--white btn--sm">Book an errand</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================== SERVICES ========================== -->
+  <section class="sec sec--tint" id="services">
+    <div class="wrap">
+      <h2 class="sec__title">Explore what you can do with Sendy</h2>
+
+      <div class="services">
+        <article class="service">
+          <div class="service__top">
+            <h3>Market Shopping</h3>
+            <span class="service__art"><img src="img/services/market-shopping.png" alt="" loading="lazy"></span>
+          </div>
+          <p>Send your list. We haggle, buy, and bring it home with the change and the receipt.</p>
+          <span class="service__price">From ₦1,500</span>
+          <a class="btn btn--dark btn--sm" href="services/market-shopping.html">Details</a>
+        </article>
+
+        <article class="service">
+          <div class="service__top">
+            <h3>Grocery Shopping</h3>
+            <span class="service__art"><img src="img/services/grocery-shopping.png" alt="" loading="lazy"></span>
+          </div>
+          <p>Supermarket run, handled. Tell us the brands you want and what to swap if they're out.</p>
+          <span class="service__price">From ₦1,500</span>
+          <a class="btn btn--dark btn--sm" href="services/grocery-shopping.html">Details</a>
+        </article>
+
+        <article class="service">
+          <div class="service__top">
+            <h3>Food Pickup</h3>
+            <span class="service__art"><img src="img/services/food-pickup.png" alt="" loading="lazy"></span>
+          </div>
+          <p>Order from anywhere you like. We collect it and get it to you while it's still hot.</p>
+          <span class="service__price">From ₦1,000</span>
+          <a class="btn btn--dark btn--sm" href="services/food-pickup.html">Details</a>
+        </article>
+
+        <article class="service">
+          <div class="service__top">
+            <h3>Package Pickup</h3>
+            <span class="service__art"><img src="img/services/package-pickup.png" alt="" loading="lazy"></span>
+          </div>
+          <p>Can't reach the pickup point before it closes? Give us the details and we'll collect it.</p>
+          <span class="service__price">From ₦1,200</span>
+          <a class="btn btn--dark btn--sm" href="services/package-pickup.html">Details</a>
+        </article>
+
+        <article class="service">
+          <div class="service__top">
+            <h3>Delivery</h3>
+            <span class="service__art"><img src="img/services/delivery.png" alt="" loading="lazy"></span>
+          </div>
+          <p>Send something across Lagos without leaving your house, sealed in a Sendy mailer.</p>
+          <span class="service__price">From ₦1,200</span>
+          <a class="btn btn--dark btn--sm" href="services/delivery.html">Details</a>
+        </article>
+
+        <article class="service">
+          <div class="service__top">
+            <h3>Personal Errands</h3>
+            <span class="service__art"><img src="img/services/personal-errands.png" alt="" loading="lazy"></span>
+          </div>
+          <p>Queue at the bank, drop documents, pay a bill, collect something from a friend.</p>
+          <span class="service__price">From ₦1,500</span>
+          <a class="btn btn--dark btn--sm" href="services/personal-errands.html">Details</a>
+        </article>
+
+        <article class="service">
+          <div class="service__top">
+            <h3>Custom Errand</h3>
+            <span class="service__art"><img src="img/services/custom-errand.png" alt="" loading="lazy"></span>
+          </div>
+          <p>Doesn't fit the list? Describe it and we'll tell you straight whether we can do it.</p>
+          <span class="service__price">From ₦1,500</span>
+          <a class="btn btn--dark btn--sm" href="services/custom-errand.html">Details</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================== ACCOUNT =========================== -->
+  <section class="sec" id="account">
+    <div class="wrap account">
+      <div>
+        <h2>Log in to see your errands</h2>
+        <p>Your past errands, saved addresses and receipts, all in one place — so the next booking takes seconds instead of minutes.</p>
+        <div class="account__actions">
+          <a class="btn btn--dark" href="#account">Log in to your account</a>
+          <a class="account__link" href="#account">Create an account</a>
+        </div>
+      </div>
+      <div class="account__art">
+        <img src="img/ill/account.png" alt="A Sendy rider handing a package to a customer at their door" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PLAN AHEAD BANNER ====================== -->
+  <section class="sec" id="plan">
+    <div class="wrap">
+      <h2 class="sec__title">Plan for later</h2>
+
+      <div class="plan">
+        <div class="plan__panel">
+          <div class="plan__copy">
+            <div class="plan__tabs" role="tablist" aria-label="When do you need this?">
+              <button class="plan__tab" role="tab" aria-selected="true" type="button">Schedule</button>
+              <button class="plan__tab" role="tab" aria-selected="false" type="button">Right now</button>
+            </div>
+
+            <h2>You've got enough to deal with today.</h2>
+            <p>Pick a day and a time, and a rider is lined up before you need one. Tell Sendy what you need — we'll handle the rest.</p>
+
+            <div class="plan__label">Choose date and time</div>
+            <div class="plan__fields">
+              <label class="plan__field">
+                <span>Date</span>
+                <span class="plan__field-in">
+                  <svg width="17" height="17" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2.5" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                  <input type="date" id="plan-date" name="date" aria-label="Date">
+                </span>
+              </label>
+              <label class="plan__field">
+                <span>Time</span>
+                <span class="plan__field-in">
+                  <svg width="17" height="17" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M12 7v5.2l3.2 3.2" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <input type="time" id="plan-time" name="time" aria-label="Time">
+                </span>
+              </label>
+            </div>
+
+            <a class="btn btn--pink" href="https://wa.me/2347047654376?text=I%27d%20like%20to%20schedule%20an%20errand" target="_blank" rel="noopener">Book an errand</a>
+          </div>
+
+          <div class="plan__art">
+            <img src="img/plan-ahead.png" alt="Someone working at their desk while a Sendy bag waits beside them" loading="lazy">
+          </div>
+        </div>
+
+        <aside class="plan__side">
+          <h3>What you get</h3>
+          <ul>
+            <li>
+              <svg width="19" height="19" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2.5" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              Choose your pickup time up to 7 days in advance.
+            </li>
+            <li>
+              <svg width="19" height="19" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8" fill="none"/><path d="M12 7v5.2l3.2 3.2" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              We confirm the price on WhatsApp before a rider moves.
+            </li>
+            <li>
+              <svg width="19" height="19" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M5 12l4-4M5 12l4 4" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Change or cancel any time before the rider sets off.
+            </li>
+          </ul>
+          <a class="plan__terms" href="https://wa.me/2347047654376" target="_blank" rel="noopener">Ask us anything</a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= HOW IT WORKS ======================= -->
+  <section class="sec sec--tint" id="how">
+    <div class="wrap">
+      <h2 class="sec__title">Booking takes about a minute</h2>
+      <div class="icards">
+        <div class="icard">
+          <div class="icard__plate"><img src="img/ill/s1-tell-us.png" alt="" loading="lazy"></div>
+          <span class="icard__n">1</span>
+          <h3>Tell us</h3>
+          <p>Message us with what you need, where it's coming from and where it's going.</p>
+        </div>
+        <div class="icard">
+          <div class="icard__plate"><img src="img/ill/s2-agree-price.png" alt="" loading="lazy"></div>
+          <span class="icard__n">2</span>
+          <h3>Agree the price</h3>
+          <p>We come back within minutes with a final figure. Nothing moves until you say yes.</p>
+        </div>
+        <div class="icard">
+          <div class="icard__plate"><img src="img/ill/s3-we-handle.png" alt="" loading="lazy"></div>
+          <span class="icard__n">3</span>
+          <h3>We handle it</h3>
+          <p>A verified rider nearby picks it up and keeps you posted the whole way.</p>
+        </div>
+        <div class="icard">
+          <div class="icard__plate"><img src="img/ill/s4-done.png" alt="" loading="lazy"></div>
+          <span class="icard__n">4</span>
+          <h3>Done, and paid</h3>
+          <p>Get your items, pay cash or transfer on completion, and rate how it went.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ APP ============================= -->
+  <section class="sec" id="app">
+    <div class="wrap app">
+      <div>
+        <h2>Sendy is even easier on the app</h2>
+        <p>Book in seconds, follow your errand's status, save your addresses and keep every errand in one place.</p>
+        <ul class="app__list">
+          <li><svg width="17" height="17" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Faster bookings with saved details</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Automatic status updates on every errand</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Save Home, Office and favourite addresses</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Full order history in one tap</li>
+        </ul>
+        <div class="app__stores">
+          <span class="store-tag">
+            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3.6c0-.9 1-1.5 1.8-1L20 11a1.1 1.1 0 0 1 0 2L5.8 21.4c-.8.5-1.8-.1-1.8-1V3.6Z" fill="currentColor"/></svg>
+            <span><small>Coming soon on</small><b>Google Play</b></span>
+          </span>
+          <span class="store-tag">
+            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M16.5 12.3c0-2.2 1.8-3.3 1.9-3.4-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.6.8-3.3.8-.7 0-1.8-.8-2.9-.8-1.5 0-2.9.9-3.7 2.2-1.6 2.7-.4 6.8 1.1 9 .8 1.1 1.7 2.3 2.9 2.3 1.1 0 1.6-.7 3-.7s1.8.7 3 .7c1.2 0 2-1.1 2.8-2.2.9-1.3 1.2-2.5 1.3-2.6-.1 0-2.5-1-2.5-3.6ZM14.8 5.5c.6-.8 1.1-1.9 1-3-1 0-2.1.6-2.8 1.4-.6.7-1.1 1.8-1 2.9 1.1.1 2.1-.5 2.8-1.3Z" fill="currentColor"/></svg>
+            <span><small>Coming soon on the</small><b>App Store</b></span>
+          </span>
+        </div>
+      </div>
+      <div class="app__art">
+        <img src="img/ill/app-phone.png" alt="The Sendy app open on a phone, showing errands, marketplace and package options" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================== TRUST ============================ -->
+  <section class="sec" id="why">
+    <div class="wrap">
+      <h2 class="sec__title">Someone you can actually rely on</h2>
+      <div class="icards">
+        <div class="icard">
+          <div class="icard__plate"><img src="img/ill/t-verified.png" alt="" loading="lazy"></div>
+          <h3>Verified riders</h3>
+          <p>Every rider is identity-checked before they can accept a single errand.</p>
+        </div>
+        <div class="icard">
+          <div class="icard__plate"><img src="img/ill/t-price.png" alt="" loading="lazy"></div>
+          <h3>The price is the price</h3>
+          <p>Agreed before your rider moves. Nothing gets added to the total afterwards.</p>
+        </div>
+        <div class="icard">
+          <div class="icard__plate"><img src="img/ill/t-person.png" alt="" loading="lazy"></div>
+          <h3>A person answers</h3>
+          <p>WhatsApp or phone during opening hours. No bot loop, no ticket number.</p>
+        </div>
+        <div class="icard">
+          <div class="icard__plate"><img src="img/ill/t-truth.png" alt="" loading="lazy"></div>
+          <h3>We'd rather tell you the truth</h3>
+          <p>If an item's out of stock, you hear it from us straight away — not at the door.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== CUSTOMER STORIES ====================== -->
+  <section class="sec sec--tint" id="stories">
+    <div class="wrap">
+      <h2 class="sec__title">What people say once the errand is done</h2>
+      <div class="stories">
+        <figure class="story">
+          <div class="story__stars" aria-label="Rated 5 out of 5">★★★★★</div>
+          <blockquote>"I sent my market list on a Tuesday morning and had everything at my door before lunch. Didn't have to leave my desk."</blockquote>
+          <figcaption class="story__who">
+            <img class="story__av" src="img/people/adaeze-o.jpg" alt="" loading="lazy" width="42" height="42">
+            <div><b>Adaeze O.</b><span>Market Shopping</span></div>
+          </figcaption>
+        </figure>
+        <figure class="story">
+          <div class="story__stars" aria-label="Rated 5 out of 5">★★★★★</div>
+          <blockquote>"My package sat at a pickup point across Lagos for a week. Sendy got it to me the same day I booked."</blockquote>
+          <figcaption class="story__who">
+            <img class="story__av" src="img/people/chuka-n.jpg" alt="" loading="lazy" width="42" height="42">
+            <div><b>Chuka N.</b><span>Package Pickup</span></div>
+          </figcaption>
+        </figure>
+        <figure class="story">
+          <div class="story__stars" aria-label="Rated 5 out of 5">★★★★★</div>
+          <blockquote>"I knew exactly who was coming and could message them directly. It felt safe, not like a random stranger at my gate."</blockquote>
+          <figcaption class="story__who">
+            <img class="story__av" src="img/people/funmi-a.jpg" alt="" loading="lazy" width="42" height="42">
+            <div><b>Funmi A.</b><span>Food Pickup</span></div>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ FAQ ============================= -->
+  <section class="sec" id="faq">
+    <div class="wrap">
+      <h2 class="sec__title" style="text-align:center;">Good to know before you book</h2>
+      <div class="faq">
+        <details open>
+          <summary>What kind of errands does Sendy handle?</summary>
+          <p>Market shopping, grocery runs, food and package pickups, deliveries and personal errands. If it doesn't fit a category, describe it and we'll tell you whether we can do it.</p>
+        </details>
+        <details>
+          <summary>How do I book?</summary>
+          <p>Message us on WhatsApp, or call. Tell us what you need, where it's coming from and where it's going. There's no account to create and nothing to install.</p>
+        </details>
+        <details>
+          <summary>How much does it cost?</summary>
+          <p>Errands start from ₦1,000 to ₦1,500 depending on the type, then vary with distance and what's involved. We confirm the exact figure with you before a rider moves.</p>
+        </details>
+        <details>
+          <summary>How do I pay?</summary>
+          <p>Cash or bank transfer, arranged directly with us once your rider is on the way. There's nothing to pay online.</p>
+        </details>
+        <details>
+          <summary>Can I follow my errand?</summary>
+          <p>Yes. Every errand gets a reference and a clear status, and we message you as it moves — including if something goes wrong.</p>
+        </details>
+        <details>
+          <summary>What if something goes wrong with my order?</summary>
+          <p>Reach us on WhatsApp or by phone and a real person will sort it out, refund requests included.</p>
+        </details>
+        <details>
+          <summary>What areas do you cover?</summary>
+          <p>We're based in Ikotun-Igando and cover a growing part of Lagos. Ask us and we'll confirm whether we reach you before you commit.</p>
+        </details>
+        <details>
+          <summary>When are you open?</summary>
+          <p>Monday to Saturday, 8:00 AM to 10:00 PM. Messages sent outside those hours get answered when we open.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- includes/footer.php -->
+<footer class="foot">
+  <div class="wrap">
+    <a href="#top" class="foot__brand"><img src="img/logo-badge.png" alt="">Sendy</a>
+    <p class="foot__about">You have things to do. Sendy gets them done — market runs, pickups, deliveries and everyday errands.</p>
+
+    <div class="foot__grid">
+      <div>
+        <div class="foot__socials">
+          <a href="https://www.tiktok.com/@sendyerrands" target="_blank" rel="noopener" aria-label="TikTok"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.3 2h-3.1v13.3a2.7 2.7 0 1 1-2.3-2.67v-3.15A5.85 5.85 0 1 0 16.3 15.1V8.3a7.4 7.4 0 0 0 4.4 1.44V6.6a4.3 4.3 0 0 1-4.4-4.6Z"/></svg></a>
+          <a href="https://www.facebook.com/profile.php?id=100064867516467" target="_blank" rel="noopener" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 22v-8.4h2.8l.42-3.26H13.5V8.24c0-.94.26-1.58 1.6-1.58h1.72V3.74A23 23 0 0 0 14.3 3.6c-2.5 0-4.2 1.52-4.2 4.32v2.42H7.28v3.26h2.82V22h3.4Z"/></svg></a>
+          <a href="https://x.com/Sendyerrands" target="_blank" rel="noopener" aria-label="X"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.53 10.4 20.4 2.5h-1.63l-5.96 6.86L8.06 2.5H2.6l7.2 10.48-7.2 8.3h1.63l6.3-7.24 5.03 7.24h5.44l-7.47-10.88Z"/></svg></a>
+        </div>
+      </div>
+
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Market Shopping</a></li>
+          <li><a href="#services">Food Pickup</a></li>
+          <li><a href="#services">Package Pickup</a></li>
+          <li><a href="#services">Delivery</a></li>
+          <li><a href="#services">Personal Errands</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#why">Why Sendy</a></li>
+          <li><a href="#plan">Schedule ahead</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Get in touch</h4>
+        <ul>
+          <li><a href="tel:+2347047654376">+234 704 765 4376</a></li>
+          <li><a href="https://wa.me/2347047654376" target="_blank" rel="noopener">Chat on WhatsApp</a></li>
+          <li><a href="mailto:support@sendyerrands.com">support@sendyerrands.com</a></li>
+          <li><span>Mon – Sat, 8:00 AM – 10:00 PM</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot__base">
+      <span>No 7, Nimota Close, Ikotun–Igando Road, Unity Bus Stop, Lagos.</span>
+      <span>© 2026 Sendy Errands. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/2347047654376?text=Hello%20Sendy%20%F0%9F%91%8B" target="_blank" rel="noopener" aria-label="Chat with Sendy on WhatsApp">
+  <svg width="27" height="27" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.91-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.49.7.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.42-.08-.12-.28-.2-.58-.34"/><path fill="currentColor" d="M12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26C2.16 6.45 6.6 2.01 12.05 2.01c2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.43 9.89-9.88 9.89m8.41-18.3A11.82 11.82 0 0 0 12.05.01C5.5.01.16 5.35.16 11.9c0 2.1.55 4.15 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45c6.55 0 11.89-5.34 11.89-11.9a11.82 11.82 0 0 0-3.48-8.41Z"/></svg>
+</a>
+
+<script>
+// Mobile menu.
+(function () {
+  var burger = document.getElementById('burger');
+  var menu = document.getElementById('mobile-nav');
+  if (!burger || !menu) return;
+  function setOpen(open) {
+    menu.setAttribute('data-open', open ? 'true' : 'false');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+  burger.addEventListener('click', function () { setOpen(menu.getAttribute('data-open') !== 'true'); });
+  menu.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
+})();
+
+// City. The default is already in the markup, so the page is correct before
+// anything below runs and stays correct if all of it fails.
+//
+// Order of authority: a city the visitor picked beats an IP guess, always. IP
+// geolocation reports where the connection appears to be, which for anyone on
+// a VPN is the VPN's city — so it is a helpful default, never a verdict.
+(function () {
+  var el = document.getElementById('place');
+  var btn = document.getElementById('change-city');
+  var sel = document.getElementById('city-select');
+  if (!el || !btn || !sel) return;
+
+  var KEY = 'sendy-city';
+  var read = function () { try { return localStorage.getItem(KEY); } catch (e) { return null; } };
+  var write = function (v) { try { localStorage.setItem(KEY, v); } catch (e) {} };
+
+  function show(open) {
+    sel.hidden = !open;
+    btn.hidden = open;
+    el.hidden = open;
+    if (open) sel.focus();
+  }
+
+  var chosen = read();
+  if (chosen) el.textContent = chosen;
+
+  btn.addEventListener('click', function () {
+    sel.value = el.textContent.trim();
+    show(true);
+  });
+  sel.addEventListener('change', function () {
+    el.textContent = sel.value;
+    write(sel.value);
+    show(false);
+  });
+  sel.addEventListener('blur', function () { show(false); });
+
+  // Best-effort, and only when the visitor has not already chosen. Any failure
+  // — offline, blocked, rate-limited, adblocker — leaves the default standing.
+  if (chosen) return;
+  fetch('https://get.geojs.io/v1/ip/geo.json')
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (d) {
+      if (!d || !d.city) return;
+      el.textContent = d.country ? d.city + ', ' + d.country : d.city;
+    })
+    .catch(function () {});
+})();
+
+// Schedule / Right now tabs. Visual state only in this demo — the real page
+// would swap the date fields for an "as soon as possible" note.
+(function () {
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.plan__tab'));
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      tabs.forEach(function (t) { t.setAttribute('aria-selected', String(t === tab)); });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
