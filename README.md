@@ -69,14 +69,13 @@ marked with comments showing where they map to `includes/header.php` and
 
 ## Known issues with the generated artwork
 
-- **The price illustration reads "1500 KES"** — Kenyan Shillings, not Naira.
-  Needs regenerating before this goes in front of customers.
-- **The delivery illustration is a drone**, which is an odd promise for a
-  bicycle courier.
 - Some step illustrations have headings baked into the image, which can repeat
   the HTML heading beside them.
 - The three customer stories are **placeholder copy inherited from the current
-  site** — not real reviews.
+  site** — not real reviews. These need replacing before the site goes public.
+
+Fixed: the price illustration was denominated in Kenyan Shillings and now reads
+NGN, and the delivery illustration was a drone and is now a bicycle.
 
 ## Assets
 

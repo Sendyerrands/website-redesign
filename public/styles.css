@@ -364,7 +364,9 @@ p { margin: 0; }
 .plan__panel {
   position: relative;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  /* Weighted to the copy: an even split squeezed the date and time fields onto
+     separate rows, and the form is the point of the panel. */
+  grid-template-columns: 1.15fr 0.85fr;
   gap: 20px;
   background: var(--pink-tint);
   border-radius: var(--r-panel);
@@ -372,7 +374,9 @@ p { margin: 0; }
   overflow: hidden;
   align-items: center;
 }
-.plan__copy { padding: 34px 0 34px 34px; }
+/* Padding on all four sides. Previously the right and bottom were zero, which
+   left the call to action pressed against the edge of the panel. */
+.plan__copy { padding: 36px; }
 .plan__tabs { display: flex; gap: 8px; margin-bottom: 22px; }
 .plan__tab {
   border: 0;
@@ -404,17 +408,11 @@ p { margin: 0; }
 .plan__field-in input:focus { outline: none; }
 .plan__panel .btn { margin-top: 20px; }
 
-/* Half the panel, and the whole illustration. `contain` rather than `cover`
-   because this image is a scene — cropping it to fill the column cut the desk
-   and the Sendy bag, which are the reason it is there. */
-.plan__art { align-self: stretch; display: grid; place-items: center; min-height: 0; }
-.plan__art img {
-  width: 100%;
-  height: 100%;
-  max-height: 460px;
-  object-fit: contain;
-  object-position: center;
-}
+/* A cut-out illustration sitting on the tint, with room around it — rather
+   than a framed photo bled to the panel edge. Nothing to crop, so nothing to
+   scale awkwardly against the border. */
+.plan__art { align-self: center; display: grid; place-items: center; padding: 28px 36px 28px 0; }
+.plan__art img { width: 100%; height: auto; max-height: 330px; object-fit: contain; }
 
 .plan__side {
   border: 1px solid var(--line);
@@ -463,6 +461,23 @@ p { margin: 0; }
 @media (max-width: 900px) {
   .account { grid-template-columns: 1fr; gap: 30px; }
   .account h2 { max-width: none; }
+}
+
+/* ---------- feature block ----------
+   A framed scene on one side, the pitch on the other. Unlike the cut-out
+   illustrations elsewhere, this one keeps its own background — it is a painted
+   scene, and stripping it would leave a person floating with no desk. */
+.feature { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.feature__art { border-radius: var(--r-card); overflow: hidden; background: var(--pink-wash); }
+.feature__art img { width: 100%; height: auto; display: block; }
+.feature h2 { font-size: clamp(26px, 3.2vw, 38px); max-width: 15ch; }
+.feature p { margin-top: 16px; color: var(--muted); font-size: 16.5px; max-width: 42ch; }
+.feature__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin-top: 26px; }
+.feature__link { font-size: 15px; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.feature__link:hover { color: var(--pink); }
+@media (max-width: 900px) {
+  .feature { grid-template-columns: 1fr; gap: 30px; }
+  .feature h2 { max-width: none; }
 }
 
 /* ---------- steps / trust: illustration cards ----------
